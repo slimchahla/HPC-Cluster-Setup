@@ -3,7 +3,7 @@ How to setup a HPC cluster using Warewulf and SLURM
 
 ## Table of Contents
 - [What is HPC?](#what-is-hpc)
-- [Who needs HPC?](#who-needs-HPC)
+- [Who needs HPC?](#who-needs-hpc)
 - [How can I measure the power of my system?](#how-can-i-measure-the-power-of-my-system)
 - [Why not just use GPU for everything?](#why-not-just-use-gpu-for-everything)
 - [What is a cluster?](#what-is-a-cluster)
