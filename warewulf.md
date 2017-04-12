@@ -22,8 +22,9 @@ The RPMs we build need a place to go. We'll create a directory for them.
 ```
 mkdir -p /root/rpmbuild/SOURCES
 ```
-Compile and install the warewulf modules. This will also install any other programs we need such as MariaDB, a dhcp server, and tftp.
+CD into the directory then compile and install the warewulf modules. This will also install any other programs we need such as MariaDB, a dhcp server, and tftp.
 ```
+cd warewulf
 buildit common
 yum install ~/rpmbuild/RPMS/noarch/warewulf-common-*
 buildit provision
