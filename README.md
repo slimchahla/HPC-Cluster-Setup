@@ -7,6 +7,7 @@ How to setup a HPC cluster using Warewulf and SLURM
 - [How can I measure the power of my system?](#how-can-i-measure-the-power-of-my-system)
 - [Why not just use GPU for everything?](#why-not-just-use-gpu-for-everything)
 - [What is a cluster?](#what-is-a-cluster)
+- [How do I setup a HPC cluster?](#how-do-i-setup-a-hpc-cluster)
 
 
 ### What is HPC?
@@ -38,3 +39,10 @@ A cluster is a combination of computers called nodes put together in a way that 
 - *Fail-Over*: Nodes connected in a way that if one node fails, another node comes online ASAP to replace it's functionality. Used for mission critical operations where any downtime is out of the question. Similar to how hospitals have their own power generators in case of a power outage.
 - *Load-Balancing*: Nodes connected in a way where a head node distributes a job to the least busy node. Web server requests for examlple.
 
+### How do I setup a HPC cluster?
+There are many ways to do this. Here, I will be using [Warewulf](http://warewulf.lbl.gov/trac) and [Slurm](https://slurm.schedmd.com). Warewulf is a node provisoning software that allows network booting of computers using [PXE booting](https://en.wikipedia.org/wiki/Preboot_Execution_Environment). Slurm is a scheduler that will hold a queue of jobs and distribute them as resources become available.
+
+The process of getting all this software running can be a huge pain, so this guide was created to get you going from soup to nuts as quickly and painlessly as possible.
+1. [Installing Warewulf](warewulf.md)
+2. Installing MUNGE
+3. Installing SLURM
