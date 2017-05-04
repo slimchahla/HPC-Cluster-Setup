@@ -33,6 +33,9 @@ yum install ~/rpmbuild/RPMS/noarch/warewulf-vnfs-*
 buildit cluster
 yum install ~/rpmbuild/RPMS/x86_64/warewulf-cluster-*
 ```
+
+Next, we need to tell warewulf what network adapter to work with. Open `/etc/warewulf/provision.conf` with a text editor and change the network device to the network adapter you'd like it to use. In my case it was `enp0s25`.
+
 Auto configure the DHCP server. Then run the init program for warewulf.
 ```
 wwsh dhcp update
@@ -52,7 +55,6 @@ firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --zone=public --add-port=69/udp --permanent
 firewall-cmd --reload
 ```
-Next, we need to tell warewulf what network adapter to work with. Open `/etc/warewulf/provision.conf` with a text editor and change the network device to the network adapter you'd like it to use. In my case it was `enp0s25`.
 
 Now we can begin to add our nodes. This can be done by adding them one by one, but the easier way is to use an auto scanning function built into warewulf. It takes an IP address as a flag and increments the IP as it goes. If you want a node to have a different IP, you will need to add it manually, or edit it later. The command `wwnodescan` is the utility for this. The `netdev` flag is the adpater to use. The `ipaddr` is what IP to assign to the first node. The `netmask` flag is the subnet mask of the network adapter. The `vnfs` flag is the name of the chroot envrironment to use. The `bootstrap` flag sets what kernel to use for booting the node. The last thing to do is name the node. `c[1-10]` will look for 10 nodes that will be named c1, c2, c3, etc.
 ```
