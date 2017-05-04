@@ -6,8 +6,7 @@ First, escalate yourself and make sure your system is up to date. We also need t
 sudo su
 yum upgrade
 yum groups install Development\ Tools
-yum install epel-release
-yum install libselinux-devel libacl-devel libattr-devel mod_perl xinetd
+yum install epel-release libselinux-devel libacl-devel libattr-devel mod_perl xinetd
 ```
 Next you'll want to download the software from the SVN repository. I like to rename the folder from "trunk" to "warewulf"
 ```
