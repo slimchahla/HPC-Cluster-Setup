@@ -42,12 +42,12 @@ wwsh dhcp update
 wwinit all
 ```
 
-Then we need to enable tftp and allow it through the firewall
+Then we need to enable TFTP. TFTP and NFS ports are blocked by default, so we need to let them through the firewall. This probably isn't the most secure way to do this.
 ```
 systemctl enable tftp
 systemctl start tftp
-firewall-cmd --zone=public --add-port=80/tcp --permanent
-firewall-cmd --zone=public --add-port=69/udp --permanent
+sudo firewall-cmd --zone=public --add-service=tftp --permanent
+firewall-cmd --zone=public --add-service=nfs --permanent
 firewall-cmd --reload
 ```
 
