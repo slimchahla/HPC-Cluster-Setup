@@ -41,13 +41,8 @@ Auto configure the DHCP server. Then run the init program for warewulf.
 wwsh dhcp update
 wwinit all
 ```
-Now we need to create the chroot environment (Warewulf calls them VNFS) that all the nodes will boot from. This allows us edit a VNFS instead of needing to access every single node and edit them. We will name the VNFS "centos-7" and it will be stored under /var/chroots
-```
-wwmkchroot centos-7 /var/chroots/centos-7
-wwvnfs --chroot /var/chroots/centos-7
-wwbootstrap `uname -r`
-```
-With the environment created we need to do some more system config. First we need to enable tftp and allow it through the firewall
+
+Then we need to enable tftp and allow it through the firewall
 ```
 systemctl enable tftp
 systemctl start tftp
@@ -56,7 +51,14 @@ firewall-cmd --zone=public --add-port=69/udp --permanent
 firewall-cmd --reload
 ```
 
-Now we can begin to add our nodes. This can be done by adding them one by one, but the easier way is to use an auto scanning function built into warewulf. It takes an IP address as a flag and increments the IP as it goes. If you want a node to have a different IP, you will need to add it manually, or edit it later. The command `wwnodescan` is the utility for this. The `netdev` flag is the adpater to use. The `ipaddr` is what IP to assign to the first node. The `netmask` flag is the subnet mask of the network adapter. The `vnfs` flag is the name of the chroot envrironment to use. The `bootstrap` flag sets what kernel to use for booting the node. The last thing to do is name the node. `c[1-10]` will look for 10 nodes that will be named c1, c2, c3, etc.
+Now we need to create the chroot environment (Warewulf calls them VNFS) that all the nodes will boot from. This allows us edit a VNFS instead of needing to access every single node and edit them. We will name the VNFS "centos-7" and it will be stored under /var/chroots
+```
+wwmkchroot centos-7 /var/chroots/centos-7
+wwvnfs --chroot /var/chroots/centos-7
+wwbootstrap `uname -r`
+```
+
+With the environment created, now we can begin to add our nodes. This can be done by adding them one by one, but the easier way is to use an auto scanning function built into warewulf. It takes an IP address as a flag and increments the IP as it goes. If you want a node to have a different IP, you will need to add it manually, or edit it later. The command `wwnodescan` is the utility for this. The `netdev` flag is the adpater to use. The `ipaddr` is what IP to assign to the first node. The `netmask` flag is the subnet mask of the network adapter. The `vnfs` flag is the name of the chroot envrironment to use. The `bootstrap` flag sets what kernel to use for booting the node. The last thing to do is name the node. `c[1-10]` will look for 10 nodes that will be named c1, c2, c3, etc.
 ```
 wwnodescan --netdev=enp0s25 --ipaddr=192.168.1.3 --netmask=255.255.255.0 --vnfs=centos-7 --bootstrap=`uname -r` c[1-3]
 ```
