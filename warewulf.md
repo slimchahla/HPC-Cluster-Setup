@@ -46,7 +46,7 @@ Then we need to enable TFTP. TFTP and NFS ports are blocked by default, so we ne
 ```
 systemctl enable tftp
 systemctl start tftp
-sudo firewall-cmd --zone=public --add-service=tftp --permanent
+firewall-cmd --zone=public --add-service=tftp --permanent
 firewall-cmd --zone=public --add-service=nfs --permanent
 firewall-cmd --reload
 ```
