@@ -59,6 +59,6 @@ firewall-cmd --zone=public --add-service=tftp --permanent
 firewall-cmd --zone=public --add-service=nfs --permanent
 firewall-cmd --reload
 
-echo "All done. You can now add nodes. wwnodescan is the fastest way to do this."
+echo "All done. You are now ready to create your chroot evironment."
 
 
