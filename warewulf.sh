@@ -7,7 +7,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 #Check that argument for network interface was provided
-if [$# -eq 0]; then
+if [ $# -eq 0 ]; then
     echo "You need to supply the network interface you'd like warewulf to use"
     echo "Example: ./warewulf_setup.sh enp0s25"
     exit 1
