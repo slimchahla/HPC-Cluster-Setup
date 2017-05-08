@@ -1,5 +1,5 @@
 # Installing Warewulf on CentOS 7
-Installing Warewulf involves downloading the software and compiling. After, it needs to be configured to operate with your environment. This guide was made orignally by [30jon](https://github.com/30jon) before I editied it and made my own changes.
+Installing Warewulf involves downloading the software and compiling. After, it needs to be configured to operate with your environment. This guide was made orignally by [30jon](https://github.com/30jon) before I editied it and made my own changes. I have made a script that will auto install and configure warewulf. It takes you up to the step where you create the chroot environment. It can be found [here](warewulf.sh)
 
 First, escalate yourself and make sure your system is up to date. We also need to install some dependencies.
 ```
