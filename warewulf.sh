@@ -1,5 +1,18 @@
 #!/bin/bash
 
+#Checks that arguemnt 1 is a valid interface by checking ifconfig
+check_interface() {
+    #Check that the passed in network interface exists
+    #The awk command will ignore the first line else output the first column
+    for interface in `ifconfig -s | awk '{if(NR!=1)print $1}'`; do
+        if [ $interface = $1 ]; then
+            return 0
+        fi
+    done
+    #Return 1 specifying it wasn't found
+    return 1
+}
+
 #Check for root
 if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root" 
@@ -10,6 +23,16 @@ fi
 if [ $# -eq 0 ]; then
     echo "You need to supply the network interface you'd like warewulf to use"
     echo "Example: ./warewulf_setup.sh enp0s25"
+    exit 1
+fi
+
+#Call check_interface to verify arguemnt
+check_interface $1
+RETURN_CODE=$?
+
+#Check return code to see if interface exists
+if [ "$RETURN_CODE" -eq "1" ]; then
+    echo "Network interface $1 does not exist."
     exit 1
 fi
 
@@ -60,5 +83,3 @@ firewall-cmd --zone=public --add-service=nfs --permanent
 firewall-cmd --reload
 
 echo "All done. You are now ready to create your chroot evironment."
-
-
