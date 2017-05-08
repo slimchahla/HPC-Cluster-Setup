@@ -36,7 +36,7 @@ yum install ~/rpmbuild/RPMS/x86_64/warewulf-cluster-*
 
 Next, we need to tell warewulf what network adapter to work with. Open `/etc/warewulf/provision.conf` with a text editor and change the network device to the network adapter you'd like it to use. In my case it was `enp0s25`.
 
-Auto configure the DHCP server. Then run the init program for warewulf.
+Auto configure the DHCP server. Then run the init program for warewulf. The DHCP update will fail if the network interface is not configured with an IP address.
 ```
 wwsh dhcp update
 wwinit all
