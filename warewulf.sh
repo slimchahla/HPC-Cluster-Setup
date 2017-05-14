@@ -78,6 +78,7 @@ wwinit all
 #Allow TFTP and NFS through the firewall.
 systemctl enable tftp
 systemctl start tftp
+firewall-cmd --permanent --add-port=80/tcp
 firewall-cmd --zone=public --add-service=tftp --permanent
 firewall-cmd --zone=public --add-service=nfs --permanent
 firewall-cmd --reload
