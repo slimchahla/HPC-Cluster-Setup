@@ -30,7 +30,7 @@ c2
 c3
 ```
 
-Chroot into the chroot environment and install pdsh. Finally, repackage the NVFS
+Chroot into the chroot environment and install pdsh. Finally, repackage the VNFS
 ```
 chroot /var/chroots/centos-7
 yum install pdsh
