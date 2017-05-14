@@ -44,7 +44,7 @@ There are many ways to do this. Here, I will be using [Warewulf](http://warewulf
 
 The process of getting all this software running can be a huge pain, so this guide was created to get you going from soup to nuts as quickly and painlessly as possible.
 1. [Installing Warewulf](warewulf.md)
-  * a. yum in the chroot
+  * a. [yum in the chroot](yum.md)
   * b. [PDSH](pdsh.md)
   * c. NTP
 2. Installing MUNGE
