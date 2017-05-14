@@ -1,4 +1,4 @@
-# Installing PDSH on CentOS 7
+# Installing PDSH on CentOS 7 warewulf cluster
 Sometime you need to execute a command on all your nodes. If you only have a few, it's not too much trouble to do it one by one, but you'll
 quicky find this tedious. [PDSH](https://github.com/grondo/pdsh) is a multithreaded remote shell client which executes commands on multiple
 remote hosts in parallel. This allows you to quickly execute commands on all your nodes at once.
