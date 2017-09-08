@@ -38,8 +38,8 @@ Next, we need to tell warewulf what network adapter to work with. Open `/etc/war
 
 Auto configure the DHCP server. Then run the init program for warewulf. The DHCP update will fail if the network interface is not configured with an IP address.
 ```
-wwsh dhcp update
 wwinit all
+wwsh dhcp update
 ```
 
 Then we need to enable TFTP. HTTP, TFTP, NFS ports are blocked by default, so we need to let them through the firewall. This probably isn't the most secure way to do this.
