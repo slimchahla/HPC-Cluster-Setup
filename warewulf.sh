@@ -69,13 +69,13 @@ yum install ~/rpmbuild/RPMS/x86_64/warewulf-cluster-* -y
 echo "Changing network interface in /etc/warewulf/provision.conf to $1"
 sed -c -i.bak "s/\(network device = \).*/\1$1/" /etc/warewulf/provision.conf
 
+# Run the init program for warewulf
 # Auto configure the DHCP server. 
-# Then run the init program for warewulf
-wwsh dhcp update
 wwinit all
+wwsh dhcp update
 
-#Enable TFTP
-#Allow TFTP and NFS through the firewall.
+# Enable TFTP
+# Allow TFTP and NFS through the firewall.
 systemctl enable tftp
 systemctl start tftp
 firewall-cmd --permanent --add-port=80/tcp
